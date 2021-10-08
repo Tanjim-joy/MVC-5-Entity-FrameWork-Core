@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/libs/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/libs/bootstrap/js/bootstrap.bundle.js"></script>
+    <link href="~/libs/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/libs/bootstrap/css/bootstrap-grid.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/libs/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            padding-top: 100px;
+        }
+    </style>
+    @await RenderSectionAsync("styles", false)
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary bg-opacity-75 fixed-top">
+        <div class="container-fluid ">
+            <a class="navbar-brand mx-2" href="#">MVC Core</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mx-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Subjects" asp-action="Index">Subject</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Teachers" asp-action="Index">Teacher</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav d-flex ">
+                    <li class="nav-item dropdown ms-auto">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="dropdown-item" asp-controller="Subjects" asp-action="Index">Subject</a>
+                            <a class="dropdown-item" asp-controller="Teachers" asp-action="Index">Teacher</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Close</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container bg-primary bg-opacity-25 mb-1" style="min-height:calc(102vh - 150px)">
+        @RenderBody()
+    </div>
+    <footer class="container text-dark">
+        &copy;@DateTime.Now.Year - Create By <strong>Md. Tangimul Haque ID 1264623</strong> 
+    </footer>
+    @await RenderSectionAsync("scripts", false)
+</body>
+</html>

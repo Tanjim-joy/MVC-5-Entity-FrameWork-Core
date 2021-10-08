@@ -1,0 +1,68 @@
+﻿@model Subject
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row mx-auto">
+    <div class="col-12">
+        <h3>Edit Subjects</h3>
+        <div id="placeholder"></div>
+        <div class="d-flex justify-content-end mb-1">
+            <a class="btn btn-outline-info btn-sm mx-2" asp-controller="Subjects" asp-action="Create">Create</a>
+            <a class="btn btn-outline-danger btn-sm" asp-controller="Subjects" asp-action="Delete" asp-route-id="@Model.SubjectId">Delete</a>
+        </div>
+
+        <div class="container-fluid">
+            <form method="post" asp-action="Edit" asp-controller="Subjects" asp-route-SubjectId="@Model.SubjectId" id="fSubjects"
+                  data-ajax="true"
+                  data-ajax-method="POST"
+                  data-ajax-mode="replace"
+                  data-ajax-update="#placeholder"
+                  data-ajax-success="onSuccess">
+
+                <div class="form-group row mb-1">
+                    <label asp-for="SubjectName" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="text" asp-for="SubjectName" class="form-control form-control-sm" />
+                    </div>
+                </div>
+
+                <div class="form-group row mb-1">
+                    <label asp-for="SubjectCode" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="text" asp-for="SubjectCode" class="form-control form-control-sm" />
+
+                    </div>
+                </div>
+                <div class="form-group row mb-1">
+
+                    <div class="col-4 offset-2">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-outline-dark" asp-action="Index" asp-controller="Subjects"><i class="bi bi-layer-backward "></i>Back to Index</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/libs/jquery/jquery.js"></script>
+    <script src="~/libs/jquery/jquery.validate.js"></script>
+    <script src="~/libs/jquery/jquery.validate.unobtrusive.js"></script>
+    <script src="~/libs/datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/libs/jquery/ajax/jquery.unobtrusive-ajax.js"></script>
+
+    <script>
+        function onSuccess() {
+            $("#fSubjects").trigger('reset');
+        }
+    </script>
+
+}
+

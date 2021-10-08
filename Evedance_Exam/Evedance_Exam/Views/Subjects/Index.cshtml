@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Subject>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row text-center">
+    <div class="col-12">
+        <h3>Subjects List</h3>
+        <div class="d-flex justify-content-end mb-1">
+            <a class="btn btn-outline-info btn-sm" asp-controller="Subjects" asp-action="Create">Create</a>
+        </div>
+
+        <table class="table table-bordered table-dark text-info table-hover">
+            <thead class="table-Danger opacity-75">
+                <tr>
+                    <th scope="col">Subject Name</th>
+                    <th scope="col">Subject Code</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var subject in Model)
+                {
+                <tr class="table-success">
+                    <td>@subject.SubjectName.</td>
+
+                    <td>@subject.SubjectCode</td>
+                    <th>
+                        <a class="btn btn-outline-success btn-sm" asp-controller="Subjects" asp-action="Edit" asp-route-id="@subject.SubjectId">Edit</a>
+                        <a class="btn btn-outline-danger btn-sm" asp-controller="Subjects" asp-action="Delete" asp-route-id="@subject.SubjectId">Delete</a>
+                        
+                    </th>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
