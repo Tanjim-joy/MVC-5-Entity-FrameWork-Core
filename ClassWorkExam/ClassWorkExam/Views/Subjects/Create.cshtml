@@ -1,0 +1,69 @@
+﻿@model Subject
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <h3>Create Subjects</h3>
+        <div id="placeholder"></div>
+        <div class="row my-1">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+        </div >
+        <div id="placeholder"></div>
+        <div class="container-fluid bg-info" >
+            <form method="post" asp-action="Create" asp-controller="Subjects" id="fSubjects"
+                  data-ajax="true"
+                  data-ajax-method="POST"
+                  data-ajax-mode="replace"
+                  data-ajax-update="#placeholder"
+                  data-ajax-success="onSuccess">
+
+                <div class="form-group row mb-1">
+                    <label asp-for="SubjectName" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="text" asp-for="SubjectName" class="form-control form-control-sm" />
+                        <span asp-validation-for="SubjectName" class="text-danger" />
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row mb-1">
+                    <label asp-for="SubCode" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="text" asp-for="SubCode" class="form-control form-control-sm" />
+                        <span asp-validation-for="SubCode" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group row mb-1">
+
+                    <div class="col-4 offset-2">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            @Html.ActionLink("Back to list", "Index")
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/libs/jquery/jquery.js"></script>
+    <script src="~/libs/jquery/jquery.validate.js"></script>
+    <script src="~/libs/jquery/jquery.validate.unobtrusive.js"></script>
+    <script src="~/libs/datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/libs/jquery/ajax/jquery.unobtrusive-ajax.js"></script>
+    
+    <script>
+        function onSuccess() {
+            $("#fSubjects").trigger('reset');
+        }
+    </script>
+
+}

@@ -1,0 +1,87 @@
+﻿@model ClassWorkExam.ViewMode.TeacherEdit
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container mb-2">
+    <div class="row">
+        <div class="col-12">
+            <h3>Create Teacher:</h3>
+            <form method="post" asp-action="Edit" asp-controller="Teachers" asp-route-TeacherId="@Model.TeacherId" enctype="multipart/form-data">
+                <div class="form-group row mb-2">
+                    <label asp-for="TeacherName" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="text" asp-for="TeacherName" class="form-control form-control-sm" placeholder="Enter Teacher Name" />
+                        
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label asp-for="DateOfClass" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="text" asp-for="DateOfClass" class="form-control form-control-sm" placeholder="Class of Date" />
+                        
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label asp-for="CourseFee" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="text" asp-for="CourseFee" class="form-control form-control-sm" placeholder="Fees" />
+                        
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label asp-for="SubjectId" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <select asp-for="SubjectId" class="form-select form-select-sm" asp-items="@(new SelectList(ViewBag.Subjects, "SubjectId", "SubjectName"))" required>
+                            <option selected="selected" value="">Select Subject</option>
+                        </select>                       
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label asp-for="PIcture" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="file" asp-for="PIcture" class="form-control form-control-sm" />
+                       
+                    </div>
+                </div>
+                <div class="form-group row my-1 align-middle">
+                    <label asp-for="Continued" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input asp-for="Continued" type="checkbox" />
+                        
+                    </div>
+                </div>
+
+
+                <div class="form-group row mb-2">
+                    <div class="col-4 offset-2">
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-success">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-secondary" asp-action="Index" asp-controller="Teachers"><i class="bi bi-layer-backward "></i>Back to Index</a>
+        </div>
+    </div>
+</div>
+
+
+@section styles {
+    <link href="~/libs/datepicker/css/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+}
+@section scripts {
+    <script src="~/libs/jquery/jquery.js"></script>
+    <script src="~/libs/jquery/jquery.validate.js"></script>
+    <script src="~/libs/jquery/jquery.validate.unobtrusive.js"></script>
+    <script src="~/libs/datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/libs/jquery/ajax/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        $("#DateOfClass").datepicker({
+            format: "M dd, yyyy"
+        });
+    </script>
+}

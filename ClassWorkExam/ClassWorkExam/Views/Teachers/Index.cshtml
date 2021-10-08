@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Teacher>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container-fluid mb-2">
+    <div class="row mb-2">
+        <div class="col">
+            <div class="display-6">Teacher List</div>
+            <div class="d-flex justify-content-end mb-1">
+                <a asp-action="Create" asp-controller="Teachers"><i class="bi bi-plus btn btn-outline-success "></i></a>
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr class="text-center">
+                        <th>Picture</th>
+                        <th>Teacher Name</th>
+                        <th>Subject</th>
+                        <th>Course Fee</th>
+                        <th>Class Date</th>
+                        <th>Continued</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var teacher in Model)
+                    {
+                    <tr class="text-center align-middle">
+                        <td><img asp-append-version="true" src="/Uploads/@teacher.PIcture" style="width:45px" class="img-thumbnail" /></td>
+                        <td>@teacher.TeacherName</td>
+                        <td>@teacher.Subject.SubjectName</td>
+                        <td>@teacher.CourseFee</td>
+                        <td>@teacher.DateOfClass</td>
+                        <td>@teacher.Continued</td>
+
+                        <td class="text-center"><a asp-action="Edit" asp-controller="Teachers" asp-route-Id="@teacher.TeacherId"><i class="bi bi-pencil-square btn btn-outline-success"></i></a></td>
+                        <td class="text-center"><a asp-action="Delete" asp-controller="Teachers" asp-route-Id="@teacher.TeacherId"><i class="bi bi-trash btn btn-outline-danger"></i></a></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section styles {
+    <link href="~/libs/icons/font/bootstrap-icons.css" rel="stylesheet" />
+}
